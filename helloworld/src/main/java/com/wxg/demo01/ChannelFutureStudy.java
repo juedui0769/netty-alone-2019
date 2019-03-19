@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  * {@link io.netty.channel.DefaultChannelPromise}
  * {@link DefaultPromise#awaitUninterruptibly()}
  */
+@Deprecated
 public class ChannelFutureStudy {
 
     // BAD - NEVER DO THIS
