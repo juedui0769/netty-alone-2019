@@ -4,7 +4,8 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 /**
  * 2019年03月26日01:21:28<p></p>
- * 这个输出结果，意义不大啊！！！
+ * 这个输出结果，意义不大啊！！！<p></p>
+ * {@link io.netty.buffer.AbstractReferenceCountedByteBuf} 中是将 updater 定义为 static 成员变量的
  */
 public class AtomicUpdaterTest2 {
 
