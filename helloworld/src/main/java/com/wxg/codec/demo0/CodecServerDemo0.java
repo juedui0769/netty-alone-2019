@@ -29,7 +29,7 @@ public class CodecServerDemo0 {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
 
-//                            pipeline.addLast()
+                            pipeline.addLast(new MyCodecServerHandler0());
                         }
                     });
 
