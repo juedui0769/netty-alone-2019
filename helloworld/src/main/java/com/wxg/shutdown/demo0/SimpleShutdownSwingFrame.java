@@ -20,6 +20,7 @@ import java.util.Set;
  */
 public class SimpleShutdownSwingFrame extends JFrame {
 
+    @Deprecated
     private static Set<EventLoopGroup> eventlgs = new HashSet<>();
 
     private static SimpleShutdownSwingFrame instance;
@@ -38,7 +39,7 @@ public class SimpleShutdownSwingFrame extends JFrame {
                 @Override
                 public void windowClosing(WindowEvent e) {
                     // Do something
-                    destroy();
+                    ShutdownResources.get().destroy();
                     System.out.println("Exit!");
                     System.exit(0);
                 }
@@ -50,10 +51,6 @@ public class SimpleShutdownSwingFrame extends JFrame {
         EventQueue.invokeLater(() -> {
             setVisible(true);
         });
-    }
-
-    public void addGroup(EventLoopGroup group) {
-        eventlgs.add(group);
     }
 
     public static synchronized SimpleShutdownSwingFrame getInstance() {
@@ -70,6 +67,10 @@ public class SimpleShutdownSwingFrame extends JFrame {
         frame.showNow();
     }
 
+    /**
+     * 这里应该在最后调用 {@link Set#clear()} 方法
+     */
+    @Deprecated
     private void destroy() {
         System.out.println("eventlgs size : " + eventlgs.size());
         if (eventlgs.size() > 0) {

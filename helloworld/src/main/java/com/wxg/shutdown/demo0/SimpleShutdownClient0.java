@@ -18,10 +18,8 @@ public class SimpleShutdownClient0 {
     public static void main(String[] args) throws InterruptedException {
         group = new NioEventLoopGroup();
 
-        SimpleShutdownSwingFrame frame = SimpleShutdownSwingFrame.getInstance();
-        frame.addGroup(group);
-
-        frame.showNow();
+        ShutdownResources.get().addGroup(group);
+        System.out.println("size : " + ShutdownResources.get().size());
 
         try {
             Bootstrap bootstrap = new Bootstrap();

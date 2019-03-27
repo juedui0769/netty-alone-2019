@@ -11,7 +11,6 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.CharsetUtil;
 
-import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 
 /**
@@ -26,10 +25,11 @@ public class SimpleShutDownServer0 {
         workGroup = new NioEventLoopGroup();
 
         SimpleShutdownSwingFrame frame = SimpleShutdownSwingFrame.getInstance();
-        frame.addGroup(bossGroup);
-        frame.addGroup(workGroup);
-
         frame.showNow();
+
+        ShutdownResources.get().addGroup(bossGroup);
+        ShutdownResources.get().addGroup(workGroup);
+        System.out.println("size : " + ShutdownResources.get().size());
 
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
