@@ -14,7 +14,7 @@ import java.util.Set;
  */
 public class SimpleShutdownSwingFrame extends JFrame {
 
-    private Set<EventLoopGroup> eventlgs = new HashSet<>();
+    private static Set<EventLoopGroup> eventlgs = new HashSet<>();
 
     private static SimpleShutdownSwingFrame instance;
 
