@@ -11,6 +11,12 @@ import java.util.Set;
 
 /**
  * 窗体关闭事件，参考： <a href="https://blog.csdn.net/zhenshiyiqie/article/details/8440806">addWindowListener, windowClosing</a> {@link WindowAdapter}
+ * <ul>
+ * <li>2019年03月27日19:02:24，</li>
+ * <li>经过测试，在外部调用 {@link EventLoopGroup#shutdownGracefully()} 是可以关闭Server和Client端的</li>
+ * <li>单例模式应用到 Swing 窗口程序的创建上是失败了，也许是因为 {@link EventQueue#invokeLater(Runnable)} 的缘故，也许是因为其他原因；总之，创建Swing窗口程序时要格外小心；一般情况是，先创建swing窗口程序，再创建其他程序比如netty server；或者将 {@link #eventlgs} 放到另外的类中去维护，只要保证窗口关闭时能够调用到就可以了。</li>
+ *
+ * </ul>
  */
 public class SimpleShutdownSwingFrame extends JFrame {
 
