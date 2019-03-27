@@ -16,6 +16,8 @@ public class SimpleShutdownSwingFrame extends JFrame {
 
     private Set<EventLoopGroup> eventlgs = new HashSet<>();
 
+    private static SimpleShutdownSwingFrame instance;
+
     private SimpleShutdownSwingFrame() {
         init();
     }
@@ -48,8 +50,12 @@ public class SimpleShutdownSwingFrame extends JFrame {
         eventlgs.add(group);
     }
 
-    public static SimpleShutdownSwingFrame getInstance() {
-        return LazyInitHolder.frame;
+    public static synchronized SimpleShutdownSwingFrame getInstance() {
+        if (instance == null) {
+            instance = new SimpleShutdownSwingFrame();
+        }
+        // return LazyInitHolder.frame;
+        return instance;
     }
 
     public static void main(String[] args) {
