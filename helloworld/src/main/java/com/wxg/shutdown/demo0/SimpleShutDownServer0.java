@@ -25,6 +25,10 @@ public class SimpleShutDownServer0 {
         bossGroup = new NioEventLoopGroup();
         workGroup = new NioEventLoopGroup();
 
+        SimpleShutdownSwingFrame frame = SimpleShutdownSwingFrame.getInstance();
+        frame.addGroup(bossGroup);
+        frame.addGroup(workGroup);
+
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
 

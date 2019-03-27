@@ -16,7 +16,7 @@ public class SimpleShutdownSwingFrame extends JFrame {
 
     private Set<EventLoopGroup> eventlgs = new HashSet<>();
 
-    public SimpleShutdownSwingFrame() {}
+    private SimpleShutdownSwingFrame() {}
 
     public void init() {
         EventQueue.invokeLater(() -> {
@@ -41,8 +41,12 @@ public class SimpleShutdownSwingFrame extends JFrame {
         eventlgs.add(group);
     }
 
+    public static SimpleShutdownSwingFrame getInstance() {
+        return LazyInitHolder.frame;
+    }
+
     public static void main(String[] args) {
-        SimpleShutdownSwingFrame frame = new SimpleShutdownSwingFrame();
+        SimpleShutdownSwingFrame frame = SimpleShutdownSwingFrame.getInstance();
         frame.init();
     }
 
@@ -52,5 +56,9 @@ public class SimpleShutdownSwingFrame extends JFrame {
                 elg.shutdownGracefully();
             }
         }
+    }
+
+    private static class LazyInitHolder {
+        public static SimpleShutdownSwingFrame frame = new SimpleShutdownSwingFrame();
     }
 }
