@@ -16,9 +16,11 @@ public class SimpleShutdownSwingFrame extends JFrame {
 
     private Set<EventLoopGroup> eventlgs = new HashSet<>();
 
-    private SimpleShutdownSwingFrame() {}
+    private SimpleShutdownSwingFrame() {
+        init();
+    }
 
-    public void init() {
+    private void init() {
         EventQueue.invokeLater(() -> {
             setTitle("Welcome");
             setSize(300, 200);
@@ -33,6 +35,11 @@ public class SimpleShutdownSwingFrame extends JFrame {
                     System.exit(0);
                 }
             });
+        });
+    }
+
+    public void showNow() {
+        EventQueue.invokeLater(() -> {
             setVisible(true);
         });
     }
@@ -47,7 +54,8 @@ public class SimpleShutdownSwingFrame extends JFrame {
 
     public static void main(String[] args) {
         SimpleShutdownSwingFrame frame = SimpleShutdownSwingFrame.getInstance();
-        frame.init();
+        frame.showNow();
+        frame.showNow();
     }
 
     private void destroy() {
