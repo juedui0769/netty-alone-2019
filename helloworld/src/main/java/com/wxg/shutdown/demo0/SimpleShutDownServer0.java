@@ -29,6 +29,8 @@ public class SimpleShutDownServer0 {
         frame.addGroup(bossGroup);
         frame.addGroup(workGroup);
 
+        frame.showNow();
+
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
 

@@ -59,6 +59,7 @@ public class SimpleShutdownSwingFrame extends JFrame {
     }
 
     private void destroy() {
+        System.out.println("eventlgs size : " + eventlgs.size());
         if (eventlgs.size() > 0) {
             for (EventLoopGroup elg : eventlgs) {
                 elg.shutdownGracefully();
