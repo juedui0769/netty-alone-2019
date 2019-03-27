@@ -5,6 +5,9 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.CharsetUtil;
 
 /**
  * 2019年03月27日17:22:45
@@ -24,6 +27,8 @@ public class SimpleShutdownClient0 {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
 
+                            pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
+                            pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
                             pipeline.addLast(new SimpleStringMsgHandler());
                         }
                     });

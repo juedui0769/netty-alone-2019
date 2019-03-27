@@ -5,9 +5,13 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.util.CharsetUtil;
 
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 
 /**
@@ -31,6 +35,9 @@ public class SimpleShutDownServer0 {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
+
+                            pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
+                            pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
                             pipeline.addLast(new SimpleStringMsgHandler());
                         }
                     });
