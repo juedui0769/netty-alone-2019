@@ -24,7 +24,7 @@ public class CodecClient1 {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
 
-                            pipeline.addLast(new MyByteToLongDecoder());
+                            pipeline.addLast(new MyByteToLongDecoderV2());
                             pipeline.addLast(new MyLongToByteEncoder());
                             pipeline.addLast(new ClientHandler());
                         }
