@@ -8,6 +8,10 @@ import java.util.List;
 
 /**
  * 2019年03月27日14:54:54
+ * <h3>笔记 2019年03月28日16:13:49</h3>
+ * <ul>
+ * <li>{@link #decode(ChannelHandlerContext, ByteBuf, List)} 方法会被调用多次，参考父类 {@link ByteToMessageDecoder#callDecode(ChannelHandlerContext, ByteBuf, List)} 方法， 此方法是在 {@link ByteToMessageDecoder#channelRead(ChannelHandlerContext, Object)} 方法中被调用的。</li>
+ * </ul>
  */
 public class MyByteToLongDecoder extends ByteToMessageDecoder {
     @Override
