@@ -27,7 +27,7 @@ public class CodecClientDemo0 {
 
                             pipeline.addLast(new MyByteToLongDecoder());
                             pipeline.addLast(new MyLongToByteEncoder());
-                            pipeline.addLast(new MyCodecClientHandler());
+                            pipeline.addLast(new MyCodecClientHandler0());
                         }
                     });
             ChannelFuture future = bootstrap.connect("localhost", 8899).sync();

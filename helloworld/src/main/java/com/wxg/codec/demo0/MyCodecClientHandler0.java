@@ -5,7 +5,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.time.LocalDateTime;
 
-public class MyCodecClientHandler extends SimpleChannelInboundHandler<Long> {
+public class MyCodecClientHandler0 extends SimpleChannelInboundHandler<Long> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Long msg) throws Exception {
         System.out.println(ctx.channel().remoteAddress());
@@ -16,6 +16,10 @@ public class MyCodecClientHandler extends SimpleChannelInboundHandler<Long> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(123456L);
+        ctx.writeAndFlush(1L);
+        ctx.writeAndFlush(2L);
+        ctx.writeAndFlush(3L);
+        ctx.writeAndFlush(4L);
     }
 
     @Override
