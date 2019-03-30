@@ -17,6 +17,8 @@ public class FixedLengthFrameDecoderTest {
     /**
      * 对照书本敲打一遍后，
      * 对 {@link ByteBuf#retain()} 和 {@link ByteBuf#release()} 有了更深刻的体会！
+     * {@link ByteBuf#duplicate()} 方法返回一个浅拷贝，引用计数不会增加，
+     * 如果要重用ByteBuf需要调用 {@link ByteBuf#retain()} 方法，
      */
     @Test
     public void testFramesDecoded() {
