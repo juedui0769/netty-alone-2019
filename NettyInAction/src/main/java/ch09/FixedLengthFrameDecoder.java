@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * create at 2019年03月30日23:03:52，
- * 注释和感悟都记录在 FixedLengthFrameDecoderTest 中了。
+ * 注释和感悟都记录在 {@link FixedLengthFrameDecoderTest} 中了。
  * 这个类和netty提供的 {@link io.netty.handler.codec.FixedLengthFrameDecoder} 同名。
  */
 public class FixedLengthFrameDecoder extends ByteToMessageDecoder {
